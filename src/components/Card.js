@@ -14,7 +14,7 @@ const Card = ({ title, description, imageSrc }) => {
     <VStack  alignItems={"self-start"} spacing={2} background="white" color="black" borderRadius="xl">
       <Image src={imageSrc} boxSize="full"  borderRadius="md" objectFit="cover"/>
       <Heading  marginLeft={2} size="sm">{title}</Heading>
-      <Text fontSize={"sm"}  marginLeft={2} color="gray" padding="0.1px" >{description}</Text>
+      <Text fontSize={"sm"}  marginLeft={2} color="#64748b" padding="0.1px" >{description}</Text>
      <HStack  padding={2}>
       <Text fontSize="13px"  >See  more </Text>
      <FontAwesomeIcon icon={faArrowRight} size="1x" />

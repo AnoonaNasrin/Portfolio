@@ -25,7 +25,7 @@ const LandingSection = () => {
     initialValues: {
       firstName: "",
       email: "",
-      type: "",
+      type: "hireMe",
       comment: "",
     },
     onSubmit: (values) => {
@@ -36,14 +36,16 @@ const LandingSection = () => {
       email: Yup.string()
         .email("Invalid email format")
         .required("Email is required"),
-      type: Yup.string().required("Please select a type"),
-      comment: Yup.string().required("Comment is required"),
+      comment: Yup.string().required("Comment is required").min(25),
     }),
   });
 
   useEffect(()=>{
  if(response){
   onOpen(response.type , response.message)
+  if(response.type === "sucess"){
+    formik.resetForm()
+  }
  }
   },[response])
 
@@ -84,7 +86,7 @@ const LandingSection = () => {
                 />
                 <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               </FormControl>
-              <FormControl isInvalid={formik.touched.type && formik.errors.type}>
+              <FormControl >
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
                 <Select
                   id="type"
